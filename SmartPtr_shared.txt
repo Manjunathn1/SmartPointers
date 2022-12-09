@@ -1,0 +1,38 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <memory>
+#include <string>
+using namespace std;
+
+class MyClass
+{
+    public:
+    MyClass()
+    {
+        cout<<"Created MyClass!"<<endl;
+    }
+    ~MyClass()
+    {
+        cout<<"Destroyed MyClass!"<<endl;
+    }
+    
+    void print()
+    {
+        std::cout<<"Data Displayed!"<<std::endl;
+    }
+
+};
+
+int main() {
+    // Write C++ code here
+
+    shared_ptr<MyClass> shPtr = make_shared<MyClass>();
+    {
+    shared_ptr<MyClass> shPtr2 = shPtr;
+    shPtr -> print();
+    cout << "Shared count "<< shPtr.use_count()<<endl;
+    }
+    cout << "Shared count "<< shPtr.use_count()<<endl;
+  
+    return 0;
+}
